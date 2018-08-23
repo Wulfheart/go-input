@@ -17,6 +17,15 @@ func (i *UI) Ask(query string, opts *Options) (string, error) {
 	// Display the query to the user.
 	fmt.Fprintf(i.Writer, "%s", query)
 
+	var buf bytes.Buffer
+	if opts.Default != "" && !opts.HideDefault {
+		defaultVal := opts.Default
+		if opts.MaskDefault {
+			defaultVal = maskString(defaultVal)
+		}
+		buf.WriteString(fmt.Sprintf(" [%s]", defaultVal))
+	}
+
 	// resultStr and resultErr are return val of this function
 	var resultStr string
 	var resultErr error
@@ -26,17 +35,9 @@ func (i *UI) Ask(query string, opts *Options) (string, error) {
 		loopCount++
 
 		// Construct the instruction to user.
-		var buf bytes.Buffer
-		if !opts.HideOrder || loopCount > 1 {
-			buf.WriteString("\nEnter a value")
-		}
 
-		if opts.Default != "" && !opts.HideDefault {
-			defaultVal := opts.Default
-			if opts.MaskDefault {
-				defaultVal = maskString(defaultVal)
-			}
-			buf.WriteString(fmt.Sprintf(" (Default is %s)", defaultVal))
+		if !opts.HideOrder || loopCount > 1 {
+			buf.WriteString("\n> ")
 		}
 
 		// Display the instruction to user and ask to input.
