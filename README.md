@@ -16,7 +16,7 @@ The documentation is on [GoDoc][godocs].
 Use `go get` to install this package:
 
 ```bash
-$ go get github.com/tcnksm/go-input
+$ go get github.com/wulfheart/go-input
 ```
 
 ## Usage
