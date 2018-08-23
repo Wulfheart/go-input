@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/tcnksm/go-input"
+	"github.com/wulfheart/go-input"
 )
 
 func main() {

@@ -1,10 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
-	"github.com/tcnksm/go-input"
+	"github.com/wulfheart/go-input"
 )
 
 func main() {
@@ -21,6 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(lang)
 
 	log.Printf("Answer is %s\n", lang)
 }

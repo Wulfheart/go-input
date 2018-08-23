@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/tcnksm/go-input"
+	"github.com/wulfheart/go-input"
 )
 
 func main() {
@@ -16,7 +16,9 @@ func main() {
 
 	query := "Do you love golang [Y/n]"
 	name, err := ui.Ask(query, &input.Options{
-		Required: true,
+		Required:  true,
+		HideOrder: true,
+		Loop:      true,
 		// Validate input
 		ValidateFunc: func(s string) error {
 			if s != "Y" && s != "n" {
