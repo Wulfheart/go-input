@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
 
 	"github.com/wulfheart/go-input"
 )
@@ -13,10 +12,8 @@ func main() {
 
 	query := "What is your name?"
 	name, err := ui.Ask(query, &input.Options{
-		// Read the default val from env var
-		Default:  os.Getenv("NAME"),
-		Required: true,
-		Loop:     true,
+		Required:  true,
+		HideOrder: true,
 	})
 	if err != nil {
 		log.Fatal(err)
