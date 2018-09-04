@@ -12,7 +12,8 @@ func main() {
 
 	query := "What is your name?"
 	name, err := ui.Ask(query, &input.Options{
-		Required:  true,
+		Required:  false,
+		Default: "Test",
 		HideOrder: true,
 	})
 	if err != nil {
